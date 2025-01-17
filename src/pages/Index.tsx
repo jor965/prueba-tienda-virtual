@@ -8,7 +8,7 @@ const products: Product[] = [
   {
     id: 1,
     name: "Gaseosa Cola 2L",
-    price: 3.99,
+    price: 6500,
     description: "Refrescante gaseosa sabor cola en botella familiar",
     image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97",
     category: "Bebidas",
@@ -16,7 +16,7 @@ const products: Product[] = [
   {
     id: 2,
     name: "Snacks Variados Pack",
-    price: 5.99,
+    price: 12000,
     description: "Paquete surtido de snacks salados y dulces",
     image: "https://images.unsplash.com/photo-1621447504864-d8686f215c04",
     category: "Snacks",
@@ -24,7 +24,7 @@ const products: Product[] = [
   {
     id: 3,
     name: "Jugo Natural 1L",
-    price: 4.50,
+    price: 8500,
     description: "Jugo 100% natural de naranja recién exprimida",
     image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba",
     category: "Bebidas",
@@ -32,7 +32,7 @@ const products: Product[] = [
   {
     id: 4,
     name: "Galletas Surtidas",
-    price: 2.99,
+    price: 4500,
     description: "Selección de galletas dulces y saladas",
     image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
     category: "Snacks",
@@ -40,7 +40,7 @@ const products: Product[] = [
   {
     id: 5,
     name: "Agua Mineral 1.5L",
-    price: 1.99,
+    price: 3500,
     description: "Agua mineral natural sin gas",
     image: "https://images.unsplash.com/photo-1560023907-5f339617ea30",
     category: "Bebidas",
@@ -48,7 +48,7 @@ const products: Product[] = [
   {
     id: 6,
     name: "Papas Fritas",
-    price: 1.50,
+    price: 2500,
     description: "Crujientes papas fritas sabor original",
     image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b",
     category: "Snacks",
