@@ -1,49 +1,19 @@
 import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+import { ChatMessage } from "./chat/ChatMessage";
+import { ChatInput } from "./chat/ChatInput";
+import { FAQ_RESPONSES } from "@/constants/chatResponses";
 
 interface Message {
   text: string;
   isUser: boolean;
 }
 
-const FAQ_RESPONSES = {
-  "compra": {
-    question: "¿Cómo puedo realizar una compra?",
-    answer: "Para realizar una compra, solo tienes que añadir los productos que te interesan al carrito de compras y luego proceder a la caja. Si necesitas ayuda, puedo guiarte en el proceso."
-  },
-  "productos": {
-    question: "¿Dónde puedo encontrar información sobre los productos?",
-    answer: "Cada producto tiene una descripción detallada en su página. Si deseas saber más sobre características, precios o disponibilidad, solo pregúntame por el producto específico."
-  },
-  "pago": {
-    question: "¿Cuáles son las opciones de pago disponibles?",
-    answer: "Aceptamos varias opciones de pago, incluyendo tarjetas de crédito/débito, PayPal, y pagos a través de plataformas seguras."
-  },
-  "envio": {
-    question: "¿Cuál es el costo de envío?",
-    answer: "El costo de envío depende de tu ubicación y del peso de los productos. Puedes ver el costo exacto antes de finalizar tu compra."
-  },
-  "tiempo": {
-    question: "¿Cuánto tiempo tarda el envío?",
-    answer: "El tiempo de envío varía según tu ubicación. En general, los pedidos nacionales tardan entre 3 y 7 días hábiles."
-  },
-  "devolucion": {
-    question: "¿Puedo hacer una devolución?",
-    answer: "Sí, ofrecemos una política de devoluciones dentro de 30 días después de recibir tu pedido. Asegúrate de que el producto esté en su estado original."
-  },
-  "stock": {
-    question: "¿Tienen productos en stock?",
-    answer: "Para verificar la disponibilidad de un producto, puedes ver su estado en la tienda. Si no está disponible, te puedo avisar cuando vuelva a estar en stock."
-  }
-};
-
 export function ChatAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const { toast } = useToast();
 
   const findResponse = (userInput: string) => {
     const lowercaseInput = userInput.toLowerCase();
@@ -98,38 +68,14 @@ export function ChatAssistant() {
               </div>
             )}
             {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  message.isUser ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div
-                  className={`max-w-[80%] p-2 rounded-lg ${
-                    message.isUser
-                      ? "bg-primary text-white"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {message.text}
-                </div>
-              </div>
+              <ChatMessage key={index} {...message} />
             ))}
           </div>
-          <form onSubmit={handleSubmit} className="p-4 border-t">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Escribe tu mensaje..."
-                className="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <Button type="submit">
-                Enviar
-              </Button>
-            </div>
-          </form>
+          <ChatInput 
+            input={input}
+            setInput={setInput}
+            onSubmit={handleSubmit}
+          />
         </div>
       )}
     </div>
