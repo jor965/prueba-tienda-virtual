@@ -43,5 +43,17 @@ export const FAQ_RESPONSES: FAQResponses = {
   "descuento": {
     question: "¿Hay algún código de descuento que pueda usar?",
     answer: "Si tienes un código de descuento, puedes introducirlo durante el proceso de pago. Si no tienes uno, puedo ofrecerte algunas promociones actuales."
+  },
+  "gracias": {
+    question: "Gracias por tu ayuda",
+    answer: "¡Ha sido un placer ayudarte! Si necesitas cualquier otra cosa, no dudes en preguntarme. ¡Que tengas un excelente día!"
+  },
+  "adios": {
+    question: "Adiós",
+    answer: "¡Gracias por tu visita! Espero haber sido de ayuda. ¡Vuelve pronto!"
+  },
+  "chao": {
+    question: "Chao",
+    answer: "¡Hasta pronto! Recuerda que estoy aquí para ayudarte cuando lo necesites. ¡Que tengas un excelente día!"
   }
 };
