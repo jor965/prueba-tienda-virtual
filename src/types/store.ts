@@ -25,4 +25,5 @@ export interface Order {
   total: number;
   status: string;
   createdAt: string;
+  shippingAddress: string;
 }

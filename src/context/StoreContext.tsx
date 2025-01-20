@@ -17,7 +17,7 @@ interface StoreContextType {
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
-  createOrder: () => Promise<void>;
+  createOrder: (shippingAddress: string) => Promise<void>;
   fetchOrders: () => Promise<void>;
 }
 
@@ -28,9 +28,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const { user, isLoading, login, logout, register } = useAuth();
   const { orders, createOrder: createOrderBase, fetchOrders: fetchOrdersBase } = useOrders();
 
-  const createOrder = async () => {
+  const createOrder = async (shippingAddress: string) => {
     if (!user) return;
-    await createOrderBase(user, cart, cartTotal);
+    await createOrderBase(user, cart, cartTotal, shippingAddress);
     clearCart();
   };
 

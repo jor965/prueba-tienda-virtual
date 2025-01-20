@@ -9,6 +9,27 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      chat_respuestas: {
+        Row: {
+          clave: string
+          id_respuesta: string
+          pregunta: string
+          respuesta: string
+        }
+        Insert: {
+          clave: string
+          id_respuesta?: string
+          pregunta: string
+          respuesta: string
+        }
+        Update: {
+          clave?: string
+          id_respuesta?: string
+          pregunta?: string
+          respuesta?: string
+        }
+        Relationships: []
+      }
       comentarios: {
         Row: {
           comentario: string | null
@@ -95,6 +116,7 @@ export type Database = {
       }
       ordenes: {
         Row: {
+          direccion_envio: string | null
           estado_orden: string | null
           fecha_orden: string | null
           id_orden: string
@@ -103,6 +125,7 @@ export type Database = {
           total_orden: number
         }
         Insert: {
+          direccion_envio?: string | null
           estado_orden?: string | null
           fecha_orden?: string | null
           id_orden?: string
@@ -111,6 +134,7 @@ export type Database = {
           total_orden: number
         }
         Update: {
+          direccion_envio?: string | null
           estado_orden?: string | null
           fecha_orden?: string | null
           id_orden?: string

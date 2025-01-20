@@ -10,7 +10,7 @@ export interface FAQResponses {
 export const FAQ_RESPONSES: FAQResponses = {
   "compra": {
     question: "¿Cómo puedo realizar una compra?",
-    answer: "Para realizar una compra, solo tienes que añadir los productos que te interesan al carrito de compras y luego proceder a la caja. Si necesitas ayuda, puedo guiarte en el proceso."
+    answer: "Para realizar una compra, añade los productos al carrito, proporciona tu dirección de envío y procede al pago. Si necesitas ayuda, puedo guiarte en el proceso."
   },
   "productos": {
     question: "¿Dónde puedo encontrar información sobre los productos?",
@@ -22,11 +22,15 @@ export const FAQ_RESPONSES: FAQResponses = {
   },
   "envio": {
     question: "¿Cuál es el costo de envío?",
-    answer: "El costo de envío depende de tu ubicación y del peso de los productos. Puedes ver el costo exacto antes de finalizar tu compra."
+    answer: "El costo de envío depende de tu ubicación. Asegúrate de ingresar tu dirección completa durante el proceso de compra para calcular el costo exacto."
+  },
+  "direccion": {
+    question: "¿Cómo ingreso mi dirección de envío?",
+    answer: "Durante el proceso de compra, podrás ingresar tu dirección de envío completa. Asegúrate de incluir calle, número, ciudad y código postal para garantizar una entrega exitosa."
   },
   "tiempo": {
     question: "¿Cuánto tiempo tarda el envío?",
-    answer: "El tiempo de envío varía según tu ubicación. En general, los pedidos nacionales tardan entre 3 y 7 días hábiles."
+    answer: "El tiempo de envío varía según tu ubicación. En general, los pedidos nacionales tardan entre 3 y 7 días hábiles una vez confirmada la dirección de envío."
   },
   "devolucion": {
     question: "¿Puedo hacer una devolución?",

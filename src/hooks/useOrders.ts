@@ -7,7 +7,7 @@ export function useOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const { toast } = useToast();
 
-  const createOrder = async (user: User, cart: CartItem[], cartTotal: number) => {
+  const createOrder = async (user: User, cart: CartItem[], cartTotal: number, shippingAddress: string) => {
     if (!user) {
       toast({
         title: "Error",
@@ -24,7 +24,8 @@ export function useOrders() {
           {
             id_usuario: user.id,
             total_orden: cartTotal,
-            estado_orden: 'pendiente'
+            estado_orden: 'pendiente',
+            direccion_envio: shippingAddress
           }
         ])
         .select()
@@ -82,6 +83,7 @@ export function useOrders() {
         total: order.total_orden,
         status: order.estado_orden,
         createdAt: order.fecha_orden,
+        shippingAddress: order.direccion_envio,
         items: order.detalles_orden.map((detail: any) => ({
           id: detail.productos.id_producto,
           name: detail.productos.nombre_producto,
