@@ -5,7 +5,7 @@ import { ChatAssistant } from "@/components/ChatAssistant";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Product } from "@/context/StoreContext";
+import { Product } from "@/types/store";
 
 const Index = () => {
   const { data: products, isLoading, error } = useQuery({

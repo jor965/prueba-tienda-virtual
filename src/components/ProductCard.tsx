@@ -1,4 +1,4 @@
-import { Product } from "@/context/StoreContext";
+import { Product } from "@/types/store";
 import { useStore } from "@/context/StoreContext";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
