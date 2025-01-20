@@ -9,18 +9,185 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      "Tienda virtual": {
+      comentarios: {
         Row: {
-          created_at: string
-          id: number
+          comentario: string | null
+          fecha_comentario: string | null
+          id_comentario: string
+          id_producto: string | null
+          id_usuario: string | null
+          valoracion: number | null
         }
         Insert: {
-          created_at?: string
-          id?: number
+          comentario?: string | null
+          fecha_comentario?: string | null
+          id_comentario?: string
+          id_producto?: string | null
+          id_usuario?: string | null
+          valoracion?: number | null
         }
         Update: {
-          created_at?: string
-          id?: number
+          comentario?: string | null
+          fecha_comentario?: string | null
+          id_comentario?: string
+          id_producto?: string | null
+          id_usuario?: string | null
+          valoracion?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comentarios_id_producto_fkey"
+            columns: ["id_producto"]
+            isOneToOne: false
+            referencedRelation: "productos"
+            referencedColumns: ["id_producto"]
+          },
+          {
+            foreignKeyName: "comentarios_id_usuario_fkey"
+            columns: ["id_usuario"]
+            isOneToOne: false
+            referencedRelation: "usuarios"
+            referencedColumns: ["id_usuario"]
+          },
+        ]
+      }
+      detalles_orden: {
+        Row: {
+          cantidad_producto: number
+          id_detalle: string
+          id_orden: string | null
+          id_producto: string | null
+          precio_unitario: number
+          subtotal: number
+        }
+        Insert: {
+          cantidad_producto: number
+          id_detalle?: string
+          id_orden?: string | null
+          id_producto?: string | null
+          precio_unitario: number
+          subtotal: number
+        }
+        Update: {
+          cantidad_producto?: number
+          id_detalle?: string
+          id_orden?: string | null
+          id_producto?: string | null
+          precio_unitario?: number
+          subtotal?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "detalles_orden_id_orden_fkey"
+            columns: ["id_orden"]
+            isOneToOne: false
+            referencedRelation: "ordenes"
+            referencedColumns: ["id_orden"]
+          },
+          {
+            foreignKeyName: "detalles_orden_id_producto_fkey"
+            columns: ["id_producto"]
+            isOneToOne: false
+            referencedRelation: "productos"
+            referencedColumns: ["id_producto"]
+          },
+        ]
+      }
+      ordenes: {
+        Row: {
+          estado_orden: string | null
+          fecha_orden: string | null
+          id_orden: string
+          id_usuario: string | null
+          metodo_pago: string | null
+          total_orden: number
+        }
+        Insert: {
+          estado_orden?: string | null
+          fecha_orden?: string | null
+          id_orden?: string
+          id_usuario?: string | null
+          metodo_pago?: string | null
+          total_orden: number
+        }
+        Update: {
+          estado_orden?: string | null
+          fecha_orden?: string | null
+          id_orden?: string
+          id_usuario?: string | null
+          metodo_pago?: string | null
+          total_orden?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ordenes_id_usuario_fkey"
+            columns: ["id_usuario"]
+            isOneToOne: false
+            referencedRelation: "usuarios"
+            referencedColumns: ["id_usuario"]
+          },
+        ]
+      }
+      productos: {
+        Row: {
+          cantidad_disponible: number
+          categoria: string
+          descripcion_producto: string | null
+          fecha_agregado: string | null
+          id_producto: string
+          imagen_producto: string | null
+          nombre_producto: string
+          precio: number
+        }
+        Insert: {
+          cantidad_disponible?: number
+          categoria: string
+          descripcion_producto?: string | null
+          fecha_agregado?: string | null
+          id_producto?: string
+          imagen_producto?: string | null
+          nombre_producto: string
+          precio: number
+        }
+        Update: {
+          cantidad_disponible?: number
+          categoria?: string
+          descripcion_producto?: string | null
+          fecha_agregado?: string | null
+          id_producto?: string
+          imagen_producto?: string | null
+          nombre_producto?: string
+          precio?: number
+        }
+        Relationships: []
+      }
+      usuarios: {
+        Row: {
+          direccion: string | null
+          email: string
+          fecha_registro: string | null
+          id_usuario: string
+          nombre_usuario: string
+          telefono: string | null
+          tipo_usuario: string | null
+        }
+        Insert: {
+          direccion?: string | null
+          email: string
+          fecha_registro?: string | null
+          id_usuario?: string
+          nombre_usuario: string
+          telefono?: string | null
+          tipo_usuario?: string | null
+        }
+        Update: {
+          direccion?: string | null
+          email?: string
+          fecha_registro?: string | null
+          id_usuario?: string
+          nombre_usuario?: string
+          telefono?: string | null
+          tipo_usuario?: string | null
         }
         Relationships: []
       }

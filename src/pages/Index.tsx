@@ -3,17 +3,9 @@ import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
 import { ChatAssistant } from "@/components/ChatAssistant";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-}
+import { Product } from "@/context/StoreContext";
 
 const Index = () => {
   const { data: products, isLoading, error } = useQuery({
@@ -26,15 +18,14 @@ const Index = () => {
 
       if (error) throw error;
 
-      // Transform the data to match our Product interface
       return data.map(product => ({
-        id: parseInt(product.id_producto),
+        id: product.id_producto,
         name: product.nombre_producto,
         price: parseFloat(product.precio),
         description: product.descripcion_producto || '',
         image: product.imagen_producto || 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97',
         category: product.categoria
-      }));
+      })) as Product[];
     }
   });
 
@@ -60,7 +51,6 @@ const Index = () => {
           <h2 className="text-2xl font-bold mb-8">Nuestros Productos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {isLoading ? (
-              // Loading skeletons
               Array.from({ length: 6 }).map((_, index) => (
                 <div key={index} className="space-y-4">
                   <Skeleton className="h-48 w-full" />
