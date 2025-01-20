@@ -21,7 +21,7 @@ const Index = () => {
       return data.map(product => ({
         id: product.id_producto,
         name: product.nombre_producto,
-        price: parseFloat(product.precio),
+        price: product.precio,
         description: product.descripcion_producto || '',
         image: product.imagen_producto || 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97',
         category: product.categoria

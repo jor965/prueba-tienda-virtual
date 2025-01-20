@@ -264,7 +264,25 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
       if (error) throw error;
 
-      setOrders(data || []);
+      // Map the Supabase data to our Order interface
+      const mappedOrders: Order[] = (data || []).map(order => ({
+        id: order.id_orden,
+        userId: order.id_usuario,
+        total: order.total_orden,
+        status: order.estado_orden,
+        createdAt: order.fecha_orden,
+        items: order.detalles_orden.map((detail: any) => ({
+          id: detail.productos.id_producto,
+          name: detail.productos.nombre_producto,
+          price: detail.precio_unitario,
+          description: detail.productos.descripcion_producto || '',
+          image: detail.productos.imagen_producto || '',
+          category: detail.productos.categoria,
+          quantity: detail.cantidad_producto
+        }))
+      }));
+
+      setOrders(mappedOrders);
     } catch (error: any) {
       toast({
         title: "Error al cargar órdenes",
